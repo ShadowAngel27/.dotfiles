@@ -1,0 +1,64 @@
+/* ~/.config/rofi/power-menu.rasi */
+
+* {
+    background-color: transparent;
+    text-color:       #c5c5c5;
+    margin:           0;
+    padding:          0;
+    spacing:          0;
+}
+
+window {
+    background-color: #0f0f0f;
+    border:           1px;
+    border-color:     #2a2a2a;
+    border-radius:    0;
+    width:            160px;
+}
+
+mainbox {
+    background-color: transparent;
+    children:         [inputbar, listview];
+    padding:          6px;
+    spacing:          6px;
+}
+
+inputbar {
+    background-color: #1a1a1a;
+    border:           1px;
+    border-color:     #2a2a2a;
+    padding:          5px 10px;
+    children:         [prompt];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       #4ade80;
+    font:             "JetBrainsMono Nerd Font 12";
+}
+
+listview {
+    background-color: transparent;
+    columns:          1;
+    lines:            6;
+    spacing:          2px;
+    scrollbar:        false;
+}
+
+element {
+    background-color: transparent;
+    padding:          6px 10px;
+}
+
+element selected {
+    background-color: #1a1a1a;
+    border:           0 0 0 2px;
+    border-color:     #4ade80;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    font:             "JetBrainsMono Nerd Font 12";
+    vertical-align:   0.5;
+}

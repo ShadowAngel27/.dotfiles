@@ -1,0 +1,78 @@
+; ~/.config/eww/eww.yuck
+
+;;;; Variables
+
+;;;; Poll playerctl every second to keep vars fresh
+(defpoll media_title  :interval "1s" "playerctl metadata title 2>/dev/null || echo 'Nothing playing'")
+(defpoll media_artist :interval "1s" "playerctl metadata artist 2>/dev/null || echo ''")
+(defpoll media_album  :interval "1s" "playerctl metadata album 2>/dev/null || echo ''")
+(defpoll media_art    :interval "1s" "playerctl metadata mpris:artUrl 2>/dev/null | sed 's|file://||' || echo ''")
+(defpoll media_status :interval "1s" "playerctl status 2>/dev/null | tr '[:upper:]' '[:lower:]' || echo 'stopped'")
+(defpoll media_pos    :interval "1s" "playerctl position 2>/dev/null | awk '{printf \"%d\", $1}' || echo '0'")
+(defpoll media_len    :interval "1s" "playerctl metadata mpris:length 2>/dev/null | awk '{printf \"%d\", $1/1000000}' || echo '1'")
+
+;;;; Media popup window
+(defwindow media-popup
+  :monitor 0
+  :geometry (geometry
+              :x "8px"
+              :y "38px"
+              :width "280px"
+              :height "400px"
+              :anchor "top right")
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  (media-widget))
+
+;;;; Widget
+(defwidget media-widget []
+  (box :class "media-popup"
+       :orientation "v"
+       :spacing 8
+       :space-evenly false
+
+    (box :class "art-container"
+         :visible {media_art != ""}
+      (image :path media_art
+             :image-width 264
+             :image-height 264))
+
+    (box :class "track-info"
+         :orientation "v"
+         :spacing 2
+      (label :class "track-title"
+             :text media_title
+             :limit-width 32
+             :truncate true)
+      (label :class "track-artist"
+             :text media_artist
+             :limit-width 32
+             :truncate true)
+      (label :class "track-album"
+             :text media_album
+             :limit-width 32
+             :truncate true
+             :visible {media_album != ""}))
+
+    (box :class "progress-box"
+      (scale :class "progress-bar"
+             :value media_pos
+             :min 0
+             :max {media_len == 0 ? 1 : media_len}
+             :draw-value false
+             :hexpand true
+             :onchange "playerctl position {}"))
+
+    (box :class "controls"
+         :halign "center"
+         :spacing 16
+      (button :class "ctrl-btn"
+              :onclick "playerctl previous"
+              "⏮")
+      (button :class {media_status == "playing" ? "ctrl-btn play" : "ctrl-btn pause"}
+              :onclick "playerctl play-pause"
+              {media_status == "playing" ? "⏸" : "⏯"})
+      (button :class "ctrl-btn"
+              :onclick "playerctl next"
+              "⏭"))))

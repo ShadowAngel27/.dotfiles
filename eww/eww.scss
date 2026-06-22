@@ -1,0 +1,96 @@
+// ~/.config/eww/eww.scss
+// george@cachyos — media popup style
+
+$bg:      #0f0f0f;
+$surface: #1a1a1a;
+$border:  #2a2a2a;
+$text:    #c5c5c5;
+$muted:   #555555;
+$green:   #4ade80;
+$red:     #f87171;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size:   12px;
+    all:         unset;
+}
+
+.media-popup {
+    background-color: $bg;
+    border:           1px solid $border;
+    padding:          12px;
+    min-width:        280px;
+}
+
+.art-container image {
+    border-bottom: 1px solid $border;
+    margin-bottom: 4px;
+}
+
+.track-info {
+    padding: 0 2px;
+}
+
+.track-title {
+    color:       $text;
+    font-size:   13px;
+    font-weight: bold;
+}
+
+.track-artist {
+    color:     $green;
+    font-size: 12px;
+}
+
+.track-album {
+    color:     $muted;
+    font-size: 11px;
+}
+
+.progress-box {
+    margin: 4px 0;
+}
+
+.progress-bar trough {
+    background-color: $surface;
+    border:           1px solid $border;
+    min-height:       4px;
+    border-radius:    0;
+}
+
+.progress-bar highlight {
+    background-color: $green;
+    border-radius:    0;
+}
+
+.progress-bar slider {
+    background-color: $green;
+    min-width:        8px;
+    min-height:       8px;
+    border-radius:    0;
+    margin:           -2px;
+}
+
+.controls {
+    margin-top: 4px;
+}
+
+.ctrl-btn {
+    color:            $text;
+    background-color: $surface;
+    border:           1px solid $border;
+    padding:          4px 12px;
+    font-size:        14px;
+    transition:       all 0.1s;
+}
+
+.ctrl-btn:hover {
+    background-color: $border;
+    color:            $green;
+}
+
+.ctrl-btn.play,
+.ctrl-btn.pause {
+    color:            $green;
+    border-color:     $green;
+}

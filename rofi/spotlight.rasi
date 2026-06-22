@@ -1,0 +1,66 @@
+* {
+    font:   "Noto Sans 12";
+
+    bg0:     #1c1c1ce6;
+    bg1:     #282828ff;
+    fg0:     #fbf1c7ff;
+    fg1:     #ebdbb2ff;
+    accent:  #458588ff;
+
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0;
+    padding:    0;
+    spacing:    0;
+}
+
+window {
+    background-color:   @bg0;
+    location:           center;
+    anchor:             center;
+    width:              640px;
+    border-radius:      12px;
+    border:             2px;
+    border-color:       @accent;
+}
+
+inputbar {
+    font:       "Noto Sans 16";
+    padding:    16px;
+    spacing:    12px;
+    children:   [ entry ];
+}
+
+entry {
+    placeholder:        "Search applications, files, calculations...";
+    placeholder-color:  @fg1;
+}
+
+listview {
+    fixed-height:   false;
+    dynamic:        true;
+    scrollbar:      false;
+    lines:          7;
+    padding:        8px 0px 8px 0px;
+}
+
+element {
+    padding:            10px 16px;
+    spacing:            12px;
+    background-color:   transparent;
+}
+
+element selected {
+    background-color:   @accent;
+    text-color:         @bg0;
+}
+
+element-text {
+    text-color:         inherit;
+    vertical-align:     0.5;
+}
+
+element-icon {
+    size:               24px;
+}

@@ -1,0 +1,230 @@
+// ~/.config/waybar/config.jsonc
+
+{
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+    "spacing": 0,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window",
+        "custom/media-prev",
+        "custom/media-play",
+        "custom/media-next",
+        "custom/media-title"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "custom/cpu",
+        "custom/amd-gpu",
+        "custom/nvidia-gpu",
+        "memory",
+        "wireplumber",
+        "custom/mic",
+        "battery",
+        "backlight",
+        "network",
+        "custom/pacman",
+        "custom/recorder",
+        "idle_inhibitor",
+        "custom/notifications",
+        "tray",
+        "custom/power"
+    ],
+
+    // ── LEFT ──────────────────────────────────────────────────────────────────
+
+    "hyprland/workspaces": {
+        "format": "[{name}]",
+        "on-click": "activate",
+        "all-outputs": false,
+        "show-special": false
+    },
+
+    "hyprland/window": {
+        "format": ">> {title}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "$1 [ff]",
+            "(.*) - Alacritty": "$1"
+        }
+    },
+
+    // ── MEDIA ─────────────────────────────────────────────────────────────────
+
+    "custom/media-prev": {
+        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && echo '[⏮]' || echo ''",
+        "on-click": "playerctl previous",
+        "interval": 2,
+        "tooltip": false
+    },
+
+    "custom/media-play": {
+        "exec": "playerctl status 2>/dev/null | grep -q 'Playing' && echo '[⏸]' || playerctl status 2>/dev/null | grep -q 'Paused' && echo '[⏯]' || echo ''",
+        "on-click": "playerctl play-pause",
+        "interval": 1,
+        "tooltip": false
+    },
+
+    "custom/media-next": {
+        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && echo '[⏭]' || echo ''",
+        "on-click": "playerctl next",
+        "interval": 2,
+        "tooltip": false
+    },
+
+    "custom/media-title": {
+        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && playerctl metadata --format '{{ artist }} — {{ title }}' 2>/dev/null || echo ''",
+        "on-click": "~/.config/waybar/scripts/media.sh toggle-popup",
+        "interval": 2,
+        "max-length": 30,
+        "tooltip": false
+    },
+
+    // ── CENTER ────────────────────────────────────────────────────────────────
+
+    "clock": {
+        "format": "[ {:%a %d %b  %H:%M:%S} ]",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "interval": 1
+    },
+
+    // ── RIGHT: SYSTEM ─────────────────────────────────────────────────────────
+
+    "custom/cpu": {
+        "exec": "~/.config/waybar/scripts/cpu.sh",
+        "return-type": "json",
+        "interval": 2,
+        "tooltip": true
+    },
+
+    "custom/amd-gpu": {
+        "exec": "~/.config/waybar/scripts/amd-gpu.sh",
+        "return-type": "json",
+        "interval": 3,
+        "tooltip": true
+    },
+
+    "custom/nvidia-gpu": {
+        "exec": "~/.config/waybar/scripts/nvidia-gpu.sh",
+        "return-type": "json",
+        "interval": 3,
+        "tooltip": true
+    },
+
+    "memory": {
+        "format": "RAM {used:.1f}G",
+        "interval": 5,
+        "tooltip-format": "Used: {used:.1f}G / {total:.1f}G\nSwap: {swapUsed:.1f}G / {swapTotal:.1f}G"
+    },
+
+    // ── RIGHT: AUDIO ──────────────────────────────────────────────────────────
+
+    "wireplumber": {
+        "format": "VOL {volume}%",
+        "format-muted": "VOL OFF",
+        "on-click": "pavucontrol",
+        "scroll-step": 2,
+        "max-volume": 100
+    },
+
+    "custom/mic": {
+        "exec": "~/.config/waybar/scripts/mic.sh",
+        "return-type": "json",
+        "interval": 3,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    },
+
+    // ── RIGHT: POWER INFO ─────────────────────────────────────────────────────
+
+    "battery": {
+        "interval": 30,
+        "format": "BAT {capacity}% {icon}",
+        "format-charging": "BAT {capacity}% [CHG]",
+        "format-plugged": "BAT {capacity}% [AC]",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "states": { "warning": 30, "critical": 15 },
+        "tooltip-format": "{timeTo}\nHealth: {health}%"
+    },
+
+    "backlight": {
+        "format": "BRT {percent}%",
+        "scroll-step": 5,
+        "on-scroll-up": "brightnessctl -e4 -n2 set 1%+",
+        "on-scroll-down": "brightnessctl -e4 -n2 set 1%-"
+    },
+
+    // ── RIGHT: NETWORK ────────────────────────────────────────────────────────
+
+    "network": {
+        "interval": 3,
+        "format-wifi": "NET {essid} {signalStrength}%",
+        "format-ethernet": "ETH ↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
+        "format-disconnected": "NET [DOWN]",
+        "format-linked": "NET [no IP]",
+        "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\n↑ {bandwidthUpBits}  ↓ {bandwidthDownBits}",
+        "tooltip-format-ethernet": "{ifname}\n↑ {bandwidthUpBits}  ↓ {bandwidthDownBits}",
+        "on-click": "nm-connection-editor"
+    },
+
+    // ── RIGHT: EXTRAS ─────────────────────────────────────────────────────────
+
+    "custom/pacman": {
+        "exec": "~/.config/waybar/scripts/pacman.sh",
+        "return-type": "json",
+        "interval": 3600,
+        "on-click": "alacritty -e paru",
+        "tooltip": true
+    },
+
+    "custom/recorder": {
+        "exec": "~/.config/waybar/scripts/recorder.sh",
+        "return-type": "json",
+        "interval": 2,
+        "signal": 9,
+        "on-click": "~/.config/waybar/scripts/recorder.sh toggle",
+        "tooltip": true
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated":   "[INH]",
+            "deactivated": "[   ]"
+        },
+        "tooltip-format-activated":   "Idle inhibitor ON",
+        "tooltip-format-deactivated": "Idle inhibitor OFF"
+    },
+
+    // ── NOTIFICATIONS (swaync) ────────────────────────────────────────────────
+
+    "custom/notifications": {
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "interval": "once",
+        "signal": 8,
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "tooltip": false
+    },
+
+    "tray": {
+        "spacing": 8,
+        "show-passive-items": false
+    },
+
+    "custom/power": {
+        "format": "[PWR]",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/power-menu.sh"
+    }
+}

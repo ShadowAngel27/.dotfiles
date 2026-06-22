@@ -1,0 +1,72 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "modules": [
+    "title",
+    "separator",
+    {
+      "type": "os",
+      "keyColor": "38;5;110"
+    },
+    {
+      "type": "host",
+      "key": "Machine",
+      "keyColor": "38;5;110"
+    },
+    "kernel",
+    "uptime",
+    "packages",
+    {
+      "type": "de",
+      "key": "DE",
+      "keyColor": "38;5;110"
+    },
+    "break",
+    {
+      "type": "cpu",
+      "key": "CPU",
+      "keyColor": "38;5;108",
+      "temp": true,
+      "tempSensor": "/sys/class/hwmon/hwmon6/temp1_input",
+      "format": "{1} ({4}) @ {6}GHz {8}"
+    },
+    {
+      "type": "gpu",
+      "key": "GPU",
+      "keyColor": "38;5;108",
+      "temp": false,
+      "detectionMethod": "pci"
+    },
+    {
+      "type": "memory",
+      "key": "RAM",
+      "keyColor": "38;5;146"
+    },
+    {
+      "type": "swap",
+      "key": "Swap",
+      "keyColor": "38;5;146"
+    },
+    "break",
+    {
+      "type": "disk",
+      "key": "Disk /         ",
+      "keyColor": "38;5;144",
+      "folders": "/",
+      "format": "{size-used} / {size-total} ({size-percentage})"
+    },
+    {
+      "type": "disk",
+      "key": "Disk /mnt/disk1",
+      "keyColor": "38;5;144",
+      "folders": "/mnt/disk1",
+      "format": "{size-used} / {size-total} ({size-percentage})"
+    },
+    "break",
+    {
+      "type": "battery",
+      "key": "Battery",
+      "keyColor": "38;5;167"
+    },
+    "break"
+  ]
+}
