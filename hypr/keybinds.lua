@@ -5,7 +5,7 @@ hl.bind("SUPER + B",         hl.dsp.exec_cmd("firefox"))
 hl.bind("SUPER + E",         hl.dsp.exec_cmd("thunar"))
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("alacritty -e yazi"))
 hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd("vesktop"))
-hl.bind("SUPER + G",         hl.dsp.exec_cmd("godots"))
+hl.bind("SUPER + G", hl.dsp.exec_cmd("steam steam://rungameid/404790"))
 hl.bind("SUPER + V",         hl.dsp.exec_cmd("bash -c 'cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy'"))
 
 -- ── Screenshots ───────────────────────────────────────────────────────────────
