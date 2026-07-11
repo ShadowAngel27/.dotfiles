@@ -30,12 +30,28 @@ hl.bind("SUPER + right",     hl.dsp.focus({ direction = "right" }))
 hl.bind("SUPER + up",        hl.dsp.focus({ direction = "up"    }))
 hl.bind("SUPER + down",      hl.dsp.focus({ direction = "down"  }))
 hl.bind("ALT + TAB", function()
-    hl.exec_cmd("hyprctl dispatch cyclenext")
-    hl.exec_cmd("hyprctl dispatch bringactivetotop")
+    hl.dispatch(hl.dsp.window.cycle_next())
+    hl.dispatch(hl.dsp.window.bring_to_top())
+    local w = hl.get_active_window()
+    if w ~= nil then
+        hl.dispatch(hl.dsp.cursor.move({
+            x = w.at.x + w.size.x / 2,
+            y = w.at.y + w.size.y / 2,
+        }))
+    end
 end)
-hl.bind("ALT + TAB", hl.dsp.exec_cmd("notify-send 'alt tab works'"))
 
-
+hl.bind("ALT + SHIFT + TAB", function()
+    hl.dispatch(hl.dsp.window.cycle_next({ prev = true }))
+    hl.dispatch(hl.dsp.window.bring_to_top())
+    local w = hl.get_active_window()
+    if w ~= nil then
+        hl.dispatch(hl.dsp.cursor.move({
+            x = w.at.x + w.size.x / 2,
+            y = w.at.y + w.size.y / 2,
+        }))
+    end
+end)
 
 -- ── Workspaces ────────────────────────────────────────────────────────────────
 for i = 1, 10 do
@@ -58,6 +74,7 @@ hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT
 hl.bind("XF86AudioLowerVolume",  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"),       { locked = true, repeating = true })
 hl.bind("XF86AudioMute",         hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),      { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute",      hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),    { locked = true, repeating = true })
+hl.bind("XF86Launch6",           hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),    { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 1%+"),                   { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 1%-"),                   { locked = true, repeating = true })
 hl.bind("XF86AudioNext",         hl.dsp.exec_cmd("playerctl next"),                                   { locked = true })
