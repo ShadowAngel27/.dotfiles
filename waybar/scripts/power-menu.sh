@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-# Power menu — full rebuild
+# Power menu — with toggle support
+
+if pgrep -x rofi > /dev/null; then
+    pkill -x rofi
+    exit 0
+fi
 
 options="Lock\nLogout\nSuspend\nHibernate\nReboot\nShutdown"
 
