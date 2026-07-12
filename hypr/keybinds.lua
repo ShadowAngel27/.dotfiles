@@ -22,7 +22,7 @@ hl.bind("SUPER + J",         hl.dsp.layout("togglesplit"))
 
 -- ── System ────────────────────────────────────────────────────────────────────
 hl.bind("SUPER + ESCAPE",    hl.dsp.exec_cmd("hyprlock"))
-hl.bind("SUPER + M",         hl.dsp.exec_cmd("hyprshutdown"))
+hl.bind("SUPER + M", hl.dsp.exec_cmd("~/.config/waybar/scripts/power-menu.sh"))
 
 -- ── Focus Navigation ──────────────────────────────────────────────────────────
 hl.bind("SUPER + left",      hl.dsp.focus({ direction = "left"  }))
@@ -40,7 +40,6 @@ hl.bind("ALT + TAB", function()
         }))
     end
 end)
-
 hl.bind("ALT + SHIFT + TAB", function()
     hl.dispatch(hl.dsp.window.cycle_next({ prev = true }))
     hl.dispatch(hl.dsp.window.bring_to_top())
