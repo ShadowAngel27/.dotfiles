@@ -1,64 +1,53 @@
-/* ~/.config/rofi/power-menu.rasi */
+configuration {
+    show-icons: false;
+}
 
 * {
-    background-color: transparent;
-    text-color:       #c5c5c5;
-    margin:           0;
-    padding:          0;
-    spacing:          0;
+    bg:      #0d0d0d;
+    bg-alt:  #1a1a1a;
+    fg:      #e0e0e0;
+    border:  #333333;
+    muted:   #666666;
+
+    font: "JetBrainsMono Nerd Font 12";
 }
 
 window {
-    background-color: #0f0f0f;
-    border:           1px;
-    border-color:     #2a2a2a;
-    border-radius:    0;
-    width:            160px;
+    background-color: @bg;
+    border:           1px solid;
+    border-color:     @border;
+    border-radius:    4px;
+    width:            240px;
+    padding:           12px;
 }
 
 mainbox {
     background-color: transparent;
-    children:         [inputbar, listview];
-    padding:          6px;
-    spacing:          6px;
-}
-
-inputbar {
-    background-color: #1a1a1a;
-    border:           1px;
-    border-color:     #2a2a2a;
-    padding:          5px 10px;
-    children:         [prompt];
-}
-
-prompt {
-    background-color: transparent;
-    text-color:       #4ade80;
-    font:             "JetBrainsMono Nerd Font 12";
+    children: [ "listview" ];
 }
 
 listview {
     background-color: transparent;
-    columns:          1;
     lines:            6;
-    spacing:          2px;
-    scrollbar:        false;
+    spacing:          4px;
+    fixed-height:     false;
+    dynamic:          false;
 }
 
 element {
     background-color: transparent;
-    padding:          6px 10px;
+    text-color:        @muted;
+    padding:            8px 10px;
+    border-radius:      4px;
 }
 
 element selected {
-    background-color: #1a1a1a;
-    border:           0 0 0 2px;
-    border-color:     #4ade80;
+    background-color: @bg-alt;
+    text-color:        @fg;
 }
 
 element-text {
     background-color: transparent;
-    text-color:       inherit;
-    font:             "JetBrainsMono Nerd Font 12";
-    vertical-align:   0.5;
+    text-color:        inherit;
+    vertical-align:    0.5;
 }
