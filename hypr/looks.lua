@@ -1,6 +1,6 @@
 hl.config({
     cursor = {
-    no_hardware_cursors = true,
+        no_hardware_cursors = true,
     },
     general = {
         
@@ -80,5 +80,8 @@ hl.config({
     misc = {
         force_default_wallpaper = 0,  -- change to -1
         disable_hyprland_logo   = true,
+    },
+    render = {
+        new_render_scheduling = false,
     },
 })
