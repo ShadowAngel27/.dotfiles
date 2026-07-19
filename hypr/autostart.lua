@@ -5,7 +5,7 @@ hl.on("hyprland.start", function()
 
     hl.exec_cmd("hyprpolkitagent &")
     hl.exec_cmd("swaync &")
-    hl.exec_cmd("swayosd-server &")
+    hl.exec_cmd("swayosd-server -s ~/.config/swayosd/style.css --top-margin 0.05 &")
 
     -- Audio
     hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@   18%")
