@@ -5,7 +5,7 @@ hl.on("hyprland.start", function()
 
     hl.exec_cmd("hyprpolkitagent &")
     hl.exec_cmd("swaync &")
-    hl.exec_cmd("swayosd-server -s ~/.config/swayosd/style.css --top-margin 0.05 &")
+    hl.exec_cmd("swayosd-server -s ~/.config/swayosd/style.css --config ~/.config/swayosd/config.toml &")
 
     -- Audio
     hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@   18%")
@@ -34,4 +34,5 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprshade auto &")
     hl.exec_cmd("hyprctl setcursor capitaine-cursors 24")
     hl.exec_cmd("pkill -f kwin_wayland")
+    hl.exec_cmd("mpvpaper -o 'loop no-audio hwdec=auto' '*' ~/Pictures/Wallpapers/animated.mp4")
 end)

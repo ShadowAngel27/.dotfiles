@@ -1,5 +1,5 @@
 -- ── Apps ─────────────────────────────────────────────────────────────────────
-hl.bind("SUPER + SPACE",     hl.dsp.exec_cmd("rofi -show drun -theme ~/.config/rofi/spotlight.rasi"))
+hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("rofi -show combi -combi-modi drun,calc -modi combi -theme ~/.config/rofi/spotlight.rasi"))
 hl.bind("SUPER + Q",         hl.dsp.exec_cmd("alacritty"))
 hl.bind("SUPER + B",         hl.dsp.exec_cmd("firefox"))
 hl.bind("SUPER + E",         hl.dsp.exec_cmd("thunar"))
@@ -78,3 +78,7 @@ hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("swayosd-client --brightness +1
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("swayosd-client --brightness -1"),  { locked = true, repeating = true })
 hl.bind("F11",                   hl.dsp.exec_cmd("swayosd-client --brightness -1"),  { locked = true, repeating = true })
 hl.bind("F12",                   hl.dsp.exec_cmd("swayosd-client --brightness +1"),  { locked = true, repeating = true })
+hl.bind("XF86AudioPlay",        hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioNext",        hl.dsp.exec_cmd("playerctl next"),       { locked = true })
+hl.bind("XF86AudioPrev",        hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+hl.bind("XF86AudioStop",        hl.dsp.exec_cmd("playerctl stop"),       { locked = true })
