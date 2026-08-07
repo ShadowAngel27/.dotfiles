@@ -11,19 +11,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@   18%")
     hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 30%")
 
-    -- Wallpaper config
-    local configFile = io.open(os.getenv("HOME") .. "/.config/hypr/hyprpaper.conf", "w")
-    if configFile then
-        configFile:write("wallpaper {\n")
-        configFile:write("    monitor = eDP-2\n")
-        configFile:write("    path = /home/shadow_angel/Pictures/Wallpapers/wallpaper.jpg\n")
-        configFile:write("    fit_mode = cover\n")
-        configFile:write("}\n")
-        configFile:write("splash = false\n")
-        configFile:write("ipc = true\n")
-        configFile:close()
-    end
-
     hl.exec_cmd("hyprpaper &")
     hl.exec_cmd("waybar &")
     hl.exec_cmd("wl-paste --type text  --watch cliphist store &")
@@ -36,3 +23,16 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("pkill -f kwin_wayland")
     hl.exec_cmd("mpvpaper -o 'loop no-audio hwdec=auto' '*' ~/Pictures/Wallpapers/animated.mp4")
 end)
+
+    -- -- Wallpaper config
+    -- local configFile = io.open(os.getenv("HOME") .. "/.config/hypr/hyprpaper.conf", "w")
+    -- if configFile then
+    --     configFile:write("wallpaper {\n")
+    --     configFile:write("    monitor = eDP-2\n")
+    --     configFile:write("    path = /home/shadow_angel/Pictures/Wallpapers/wallpaper.jpg\n")
+    --     configFile:write("    fit_mode = cover\n")
+    --     configFile:write("}\n")
+    --     configFile:write("splash = false\n")
+    --     configFile:write("ipc = true\n")
+    --     configFile:close()
+    -- end

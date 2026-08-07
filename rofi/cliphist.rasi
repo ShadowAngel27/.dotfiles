@@ -1,0 +1,73 @@
+* {
+    font: "JetBrainsMono Nerd Font 12";
+
+    background-color:     transparent;
+    text-color:            #e0e0e0;
+    border-color:          #333333;
+    faded-text-color:     #666666;
+    normal-background:    #0d0d0d;
+    alternate-background: #1a1a1a;
+    selected-background:  #1a1a1a;
+    scrollbar-color:      #333333;
+}
+
+window {
+    background-color:   var(normal-background);
+    location:            center;
+    anchor:              center;
+    width:               640px;
+    border-radius:       4px;
+    border:              1px;
+    border-color:        var(border-color);
+}
+
+inputbar {
+    padding:    16px;
+    spacing:    12px;
+    children:   [ entry ];
+    text-color: var(text-color);
+    border:     0px 0px 1px 0px;
+    border-color: var(border-color);
+}
+
+entry {
+    placeholder:        "Search clipboard history...";
+    placeholder-color:  var(faded-text-color);
+    text-color:         var(text-color);
+}
+
+listview {
+    fixed-height:   false;
+    dynamic:        true;
+    scrollbar:      true;
+    lines:          10;
+    padding:        8px 12px;
+    spacing:        4px;
+}
+
+scrollbar {
+    width:        4px;
+    handle-color: var(scrollbar-color);
+    border:       0;
+    padding:      0;
+}
+
+element {
+    padding:            10px 16px;
+    spacing:            12px;
+    background-color:   transparent;
+    border-radius:      4px;
+    text-color:         var(faded-text-color);
+    border:             0px 0px 1px 0px;
+    border-color:       #333333;
+}
+
+element selected {
+    background-color:   var(selected-background);
+    text-color:          var(text-color);
+}
+
+element-text {
+    text-color:         inherit;
+    vertical-align:     0.5;
+}

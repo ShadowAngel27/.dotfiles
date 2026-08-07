@@ -30,7 +30,7 @@
         "wireplumber",
         "custom/mic",
         "battery",
-        "backlight",
+        "custom/backlight",
         "network",
         "custom/pacman",
         "custom/recorder",
@@ -156,11 +156,12 @@
         "tooltip-format": "{timeTo}\nHealth: {health}%"
     },
 
-    "backlight": {
-        "format": "BRT {percent}%",
-        "scroll-step": 5,
-        "on-scroll-up": "brightnessctl -e4 -n2 set 1%+",
-        "on-scroll-down": "brightnessctl -e4 -n2 set 1%-"
+    "custom/backlight": {
+    "exec": "~/.config/waybar/scripts/brightness.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-scroll-up": "brightnessctl -e4 -n2 set 1%+",
+    "on-scroll-down": "brightnessctl -e4 -n2 set 1%-"
     },
 
     // ── RIGHT: NETWORK ────────────────────────────────────────────────────────

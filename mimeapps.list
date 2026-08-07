@@ -1,0 +1,30 @@
+[Added Associations]
+application/json=org.kde.kate.desktop;
+application/x-docbook+xml=org.kde.kate.desktop;
+application/x-yaml=org.kde.kate.desktop;
+text/markdown=org.kde.kate.desktop;
+text/plain=org.kde.kate.desktop;
+text/x-cmake=org.kde.kate.desktop;
+image/png=org.kde.gwenview.desktop;swappy.desktop;
+image/jpeg=org.kde.gwenview.desktop;
+application/x-zerosize=org.kde.kate.desktop;
+
+[Default Applications]
+application/json=org.kde.kate.desktop;
+application/x-docbook+xml=org.kde.kate.desktop;
+application/x-yaml=org.kde.kate.desktop;
+text/markdown=org.kde.kate.desktop;
+text/plain=org.kde.kate.desktop;
+text/x-cmake=org.kde.kate.desktop;
+x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/heroic=com.heroicgameslauncher.hgl.desktop
+x-scheme-handler/jetbrains=jetbrainsd.desktop
+x-scheme-handler/x-github-client=github-desktop.desktop
+x-scheme-handler/x-github-desktop-auth=github-desktop.desktop
+image/png=imv.desktop
+application/x-zerosize=org.kde.kate.desktop
+image/jpeg=imv.desktop
+image/gif=imv.desktop
+image/webp=imv.desktop
+image/bmp=imv.desktop
+image/tiff=imv.desktop

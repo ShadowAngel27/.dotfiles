@@ -1,0 +1,29 @@
+[general]
+early-exit = true
+copy-command = "wl-copy -t image/png"
+initial-tool = "pointer"
+corner-roundness = 4
+default-hide-toolbars = false
+disable-notifications = true
+fullscreen = true
+no-window-decoration = true
+
+[font]
+family = "JetBrainsMono Nerd Font"
+
+[color-palette]
+palette = [
+    "#e0e0e0",
+    "#f87171",
+    "#fb923c",
+    "#facc15",
+    "#4ade80",
+    "#666666",
+]
+
+custom = [
+    { key = "1", color = "#e0e0e0" },
+    { key = "2", color = "#f87171" },
+    { key = "3", color = "#facc15" },
+    { key = "4", color = "#4ade80" },
+]

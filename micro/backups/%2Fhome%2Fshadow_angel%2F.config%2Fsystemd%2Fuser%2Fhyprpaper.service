@@ -1,0 +1,12 @@
+ini
+[Unit]
+Description=Hyprpaper Wallpaper
+After=hyprland-session.target
+
+[Service]
+ExecStart=/usr/bin/hyprpaper
+Restart=on-failure
+
+[Install]
+WantedBy=hyprland-session.target
+WantedBy=hyprland-session.targetddd

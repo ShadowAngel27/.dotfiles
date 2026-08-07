@@ -1,40 +1,37 @@
 * {
-    font:   "Noto Sans 12";
+    font: "JetBrainsMono Nerd Font 12";
 
-    bg0:     #1c1c1ce6;
-    bg1:     #282828ff;
-    fg0:     #fbf1c7ff;
-    fg1:     #ebdbb2ff;
-    accent:  #458588ff;
-
-    background-color:   transparent;
-    text-color:         @fg0;
-
-    margin:     0;
-    padding:    0;
-    spacing:    0;
+    background-color:  transparent;
+    text-color:        #e0e0e0;
+    border-color:       #333333;
+    faded-text-color:  #666666;
+    normal-background: #0d0d0d;
+    alternate-background: #1a1a1a;
+    selected-background:  #1a1a1a;
 }
 
 window {
-    background-color:   @bg0;
+    background-color:   var(normal-background);
     location:           center;
     anchor:             center;
     width:              640px;
-    border-radius:      12px;
-    border:             2px;
-    border-color:       @accent;
+    border-radius:      4px;
+    border:             1px;
+    border-color:       var(border-color);
 }
 
 inputbar {
-    font:       "Noto Sans 16";
+    font:       "JetBrainsMono Nerd Font 14";
     padding:    16px;
     spacing:    12px;
     children:   [ entry ];
+    text-color: var(text-color);
 }
 
 entry {
     placeholder:        "Search applications, files, calculations...";
-    placeholder-color:  @fg1;
+    placeholder-color:  var(faded-text-color);
+    text-color:         var(text-color);
 }
 
 listview {
@@ -49,11 +46,15 @@ element {
     padding:            10px 16px;
     spacing:            12px;
     background-color:   transparent;
+    border-radius:      4px;
+    text-color:         var(faded-text-color);
+    border:             0px 0px 1px 0px;
+    border-color:       #333333;
 }
 
 element selected {
-    background-color:   @accent;
-    text-color:         @bg0;
+    background-color:   var(selected-background);
+    text-color:          var(text-color);
 }
 
 element-text {
