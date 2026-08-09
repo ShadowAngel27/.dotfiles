@@ -1,3 +1,4 @@
+# Config is still in work so its dont recommend to use it for now
 # Hyprland Desktop Environment Configuration
 
 Personal dotfiles and system configurations for a Hyprland-based desktop workflow on CachyOS.
