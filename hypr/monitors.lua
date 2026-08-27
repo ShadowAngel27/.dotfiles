@@ -5,7 +5,14 @@ hl.monitor({
     scale    = 1,
 })
 
--- Fallback for any unlisted monitor (e.g. future external display)
+hl.monitor({
+    output   = "HDMI-A-1",
+    mode     = "3440x1440@99.98",
+    position = "-440x-1440",
+    scale    = 1,
+})
+
+-- Fallback for any other unlisted monitor
 hl.monitor({
     output   = "",
     mode     = "preferred",

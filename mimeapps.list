@@ -8,6 +8,10 @@ text/x-cmake=org.kde.kate.desktop;
 image/png=org.kde.gwenview.desktop;swappy.desktop;
 image/jpeg=org.kde.gwenview.desktop;
 application/x-zerosize=org.kde.kate.desktop;
+application/pdf=masterpdfeditor4.desktop;okularApplication_pdf.desktop;libreoffice-draw.desktop;firefox.desktop;
+application/vnd.oasis.opendocument.graphics=xarchiver.desktop;org.kde.ark.desktop;
+x-scheme-handler/tg=userapp-AyuGram Desktop-4TP1U3.desktop;
+x-scheme-handler/tonsite=userapp-AyuGram Desktop-MI31U3.desktop;
 
 [Default Applications]
 application/json=org.kde.kate.desktop;
@@ -28,3 +32,5 @@ image/gif=imv.desktop
 image/webp=imv.desktop
 image/bmp=imv.desktop
 image/tiff=imv.desktop
+x-scheme-handler/tg=userapp-AyuGram Desktop-4TP1U3.desktop
+x-scheme-handler/tonsite=userapp-AyuGram Desktop-MI31U3.desktop
