@@ -60,6 +60,9 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@   18%")
     hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 30%")
 
+    -- Keyboard RGB
+    -- hl.exec_cmd("echo '1b003a,1b003a,1b003a,1b003a,100' | sudo tee /sys/devices/platform/acer-wmi/four_zoned_kb/per_zone_mode")
+    hl.exec_cmd("sh -c \"echo '1b003a,1b003a,1b003a,1b003a,100' | sudo tee /sys/devices/platform/acer-wmi/four_zoned_kb/per_zone_mode\"")
     start_wallpaper()
 
     hl.exec_cmd("waybar &")

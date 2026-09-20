@@ -32,6 +32,7 @@
         "battery",
         "custom/backlight",
         "network",
+        "custom/hotspot",
         "custom/pacman",
         "custom/recorder",
         "idle_inhibitor",
@@ -157,11 +158,11 @@
     },
 
     "custom/backlight": {
-    "exec": "~/.config/waybar/scripts/brightness.sh",
-    "return-type": "json",
-    "interval": 2,
-    "on-scroll-up": "brightnessctl -e4 -n2 set 1%+",
-    "on-scroll-down": "brightnessctl -e4 -n2 set 1%-"
+        "exec": "~/.config/waybar/scripts/brightness.sh",
+        "return-type": "json",
+        "interval": 2,
+        "on-scroll-up": "brightnessctl -e4 -n2 set 1%+",
+        "on-scroll-down": "brightnessctl -e4 -n2 set 1%-"
     },
 
     // ── RIGHT: NETWORK ────────────────────────────────────────────────────────
@@ -175,6 +176,14 @@
         "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\n↑ {bandwidthUpBits}  ↓ {bandwidthDownBits}",
         "tooltip-format-ethernet": "{ifname}\n↑ {bandwidthUpBits}  ↓ {bandwidthDownBits}",
         "on-click": "nm-connection-editor"
+    },
+
+    "custom/hotspot": {
+        "exec": "~/.config/waybar/scripts/hotspot.sh",
+        "return-type": "json",
+        "interval": 3,
+        "on-click": "~/.config/waybar/scripts/hotspot.sh toggle",
+        "tooltip": true
     },
 
     // ── RIGHT: EXTRAS ─────────────────────────────────────────────────────────
