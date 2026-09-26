@@ -1,22 +1,9 @@
-/* ~/.config/waybar/style.css */
-
-/* ── Palette ──────────────────────────────────────────────────
-   bg:      #0f0f0f
-   surface: #1a1a1a
-   border:  #2a2a2a
-   text:    #c5c5c5
-   muted:   #555555
-   green:   #4ade80
-   yellow:  #facc15
-   red:     #f87171
-   blue:    #60a5fa   (for network/bluetooth)
-   purple:  #c084fc   (for media)
-*/
+/* ~/.config/waybar/style.css - Minimalist Monochrome ASCII OLED */
 
 * {
     font-family:   "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
     font-size:     12px;
-    font-weight:   400;
+    font-weight:   500;
     margin:        0;
     padding:       0;
     border:        none;
@@ -25,16 +12,15 @@
 }
 
 window#waybar {
-    background-color: #0f0f0f;
-    color:            #c5c5c5;
-    border-bottom:    1px solid #1f1f1f;
-    border-radius:    4px;
+    background-color: #000000; /* Prawdziwa czern OLED */
+    color:            #e5e5e5;
+    border-bottom:    1px solid #262626;
 }
 
 .modules-left,
 .modules-center,
 .modules-right {
-    padding: 0 4px;
+    padding: 0 2px;
 }
 
 /* ── BASE MODULE ──────────────────────────────────────────────*/
@@ -42,6 +28,7 @@ window#waybar {
 #workspaces,
 #window,
 #clock,
+#cpu,
 #custom-cpu,
 #custom-amd-gpu,
 #custom-nvidia-gpu,
@@ -61,144 +48,88 @@ window#waybar {
 #custom-media-play,
 #custom-media-next,
 #custom-media-title {
-    color:            #c5c5c5;
+    color:            #a3a3a3;
     background-color: transparent;
-    padding:          2px 7px;
-    border-left:      1px solid #2a2a2a;
-    transition:       color 0.15s ease, background-color 0.15s ease;
+    padding:          2px 8px;
+    border-left:      1px solid #1a1a1a;
+    transition:       color 0.1s ease;
 }
 
-#workspaces          { border-left: none; }
-#custom-media-prev   { border-left: none; }
+#workspaces        { border-left: none; }
+#custom-media-prev  { border-left: none; }
 
 /* ── WORKSPACES ───────────────────────────────────────────────*/
 
 #workspaces button {
-    color:         #555555;
+    color:         #525252;
     background:    transparent;
-    padding:       2px 4px;
+    padding:       2px 6px;
     border:        none;
-    border-radius: 0;
-    transition:    color 0.15s ease;
 }
 
-#workspaces button:hover    { color: #c5c5c5; background: #1a1a1a; box-shadow: none; }
-#workspaces button.active   { color: #4ade80; background: #1a1a1a; font-weight: 700; }
-#workspaces button.occupied { color: #888888; }
-#workspaces button.urgent   { color: #f87171; animation: blink 0.5s steps(1) infinite; }
+#workspaces button:hover    { color: #ffffff; background: #121212; }
+#workspaces button.active   { color: #ffffff; font-weight: 700; background: #171717; }
+#workspaces button.occupied { color: #a3a3a3; }
+#workspaces button.urgent   { color: #ffffff; background: #404040; }
 
 /* ── WINDOW TITLE ─────────────────────────────────────────────*/
 
-#window { color: #888888; font-style: italic; }
+#window { color: #737373; }
 
 /* ── CLOCK ────────────────────────────────────────────────────*/
 
 #clock {
-    color:          #4ade80;
-    font-weight:    600;
-    letter-spacing: 0.5px;
-    border-left:    none;
+    color:       #ffffff;
+    font-weight: 700;
+    border-left: none;
 }
 
 /* ── MEDIA ────────────────────────────────────────────────────*/
 
 #custom-media-prev,
 #custom-media-play,
-#custom-media-next { color: #c084fc; padding: 2px 4px; }
+#custom-media-next,
+#custom-media-title { color: #d4d4d4; }
 
-#custom-media-title { color: #c084fc; font-style: italic; }
+/* ── HARDWARE STATUS (CPU, GPU, MEMORY) ───────────────────────*/
 
-/* ── CPU ──────────────────────────────────────────────────────*/
+#custom-cpu,
+#custom-amd-gpu,
+#custom-nvidia-gpu,
+#memory { color: #a3a3a3; }
 
-#custom-cpu               { color: #4ade80; }
-#custom-cpu.warning       { color: #facc15; }
-#custom-cpu.critical      { color: #f87171; animation: blink 1s steps(1) infinite; }
+#custom-cpu.warning, #custom-amd-gpu.warning, #custom-nvidia-gpu.warning, #memory.warning { color: #ffffff; }
+#custom-cpu.critical, #custom-amd-gpu.critical, #custom-nvidia-gpu.critical, #memory.critical { color: #ffffff; font-weight: 700; }
 
-/* ── AMD GPU ──────────────────────────────────────────────────*/
+/* ── AUDIO & PERIPHERALS ──────────────────────────────────────*/
 
-#custom-amd-gpu           { color: #60a5fa; }
-#custom-amd-gpu.warning   { color: #facc15; }
-#custom-amd-gpu.critical  { color: #f87171; animation: blink 1s steps(1) infinite; }
-
-/* ── NVIDIA GPU ───────────────────────────────────────────────*/
-
-#custom-nvidia-gpu          { color: #4ade80; }
-#custom-nvidia-gpu.warning  { color: #facc15; }
-#custom-nvidia-gpu.critical { color: #f87171; animation: blink 1s steps(1) infinite; }
-
-/* ── MEMORY ───────────────────────────────────────────────────*/
-
-#memory          { color: #c084fc; }
-#memory.warning  { color: #facc15; }
-#memory.critical { color: #f87171; animation: blink 1s steps(1) infinite; }
-
-/* ── AUDIO ────────────────────────────────────────────────────*/
-
-#wireplumber        { color: #4ade80; }
-#wireplumber.muted  { color: #555555; }
-
-#custom-mic        { color: #4ade80; }
-#custom-mic.muted  { color: #f87171; }
+#wireplumber, #custom-mic { color: #d4d4d4; }
+#wireplumber.muted, #custom-mic.muted { color: #525252; }
 
 /* ── BATTERY ──────────────────────────────────────────────────*/
 
-#battery                          { color: #4ade80; }
-#battery.charging, #battery.plugged { color: #60a5fa; }
-#battery.warning:not(.charging)   { color: #facc15; }
-#battery.critical:not(.charging)  { color: #f87171; animation: blink 1s steps(1) infinite; }
+#battery                          { color: #a3a3a3; }
+#battery.charging, #battery.plugged { color: #ffffff; }
+#battery.critical:not(.charging) { color: #ffffff; font-weight: 700; }
 
-/* ── BACKLIGHT ────────────────────────────────────────────────*/
+/* ── MISC MODULES ─────────────────────────────────────────────*/
 
-#backlight { color: #facc15; }
+#backlight, #network, #custom-pacman, #custom-notifications { color: #a3a3a3; }
 
-/* ── NETWORK ──────────────────────────────────────────────────*/
-
-#network              { color: #60a5fa; }
-#network.disconnected { color: #f87171; }
-#network.linked       { color: #facc15; }
-
-/* ── PACMAN UPDATES ───────────────────────────────────────────*/
-
-#custom-pacman          { color: #4ade80; }
-#custom-pacman.warning  { color: #facc15; }
-#custom-pacman.critical { color: #f87171; animation: blink 1s steps(1) infinite; }
-#custom-pacman.updated  { color: #555555; }
-
-/* ── RECORDER ─────────────────────────────────────────────────*/
-
-#custom-recorder           { color: #555555; }
-#custom-recorder.recording { color: #f87171; animation: blink 1s steps(1) infinite; }
-
-/* ── IDLE INHIBITOR ───────────────────────────────────────────*/
-
-#idle-inhibitor           { color: #555555; }
-#idle-inhibitor.activated { color: #facc15; }
-
-/* ── NOTIFICATIONS ────────────────────────────────────────────*/
-
-#custom-notifications { color: #c084fc; }
+#network.disconnected { color: #525252; }
+#idle-inhibitor.activated { color: #ffffff; font-weight: 700; }
 
 /* ── POWER ────────────────────────────────────────────────────*/
 
-#custom-power       { color: #f87171; font-weight: 700; }
-#custom-power:hover { color: #ffffff; background: #f87171; }
+#custom-power        { color: #ffffff; font-weight: 700; }
+#custom-power:hover  { color: #000000; background: #ffffff; }
 
 /* ── TOOLTIP ──────────────────────────────────────────────────*/
 
 tooltip {
-    background-color: #1a1a1a;
-    border:           1px solid #2a2a2a;
-    border-radius:    0;
-    color:            #c5c5c5;
-    font-size:        11px;
+    background-color: #000000;
+    border:           1px solid #262626;
+    color:            #e5e5e5;
 }
 
-tooltip label { color: #c5c5c5; }
-
-/* ── ANIMATIONS ───────────────────────────────────────────────*/
-
-@keyframes blink {
-    0%   { opacity: 1.0; }
-    50%  { opacity: 0.3; }
-    100% { opacity: 1.0; }
-}
+tooltip label { color: #e5e5e5; }

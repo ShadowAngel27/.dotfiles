@@ -84,4 +84,7 @@ hl.config({
     render = {
         new_render_scheduling = false,
     },
+    cursor = {
+        inactive_timeout = 5, -- Kursor znika po 3 sekundach bezczynności
+    },
 })

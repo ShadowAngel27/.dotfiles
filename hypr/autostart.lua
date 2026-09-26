@@ -52,6 +52,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("systemctl --user start graphical-session.target")
 
+    hl.exec_cmd("hypridle &")
     hl.exec_cmd("hyprpolkitagent &")
     hl.exec_cmd("swaync &")
     hl.exec_cmd("swayosd-server -s ~/.config/swayosd/style.css --config ~/.config/swayosd/config.toml &")
@@ -61,7 +62,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 30%")
 
     -- Keyboard RGB
-    -- hl.exec_cmd("echo '1b003a,1b003a,1b003a,1b003a,100' | sudo tee /sys/devices/platform/acer-wmi/four_zoned_kb/per_zone_mode")
     hl.exec_cmd("sh -c \"echo '1b003a,1b003a,1b003a,1b003a,100' | sudo tee /sys/devices/platform/acer-wmi/four_zoned_kb/per_zone_mode\"")
     start_wallpaper()
 

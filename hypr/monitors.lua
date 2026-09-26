@@ -1,15 +1,17 @@
+-- Ekran laptopa (Acer Nitro)
 hl.monitor({
     output   = "eDP-2",
     mode     = "2560x1600@165",
     position = "0x0",
-    scale    = 1.33,
+    scale    = 1.25,
 })
 
+-- Nowy monitor QD-OLED 240Hz po HDMI 2.1
 hl.monitor({
     output   = "HDMI-A-1",
-    mode     = "3440x1440@99.98",
-    position = "-440x-1440",
-    scale    = 1,
+    mode     = "2560x1440@240",
+    position = "2048x0",
+    scale    = 1,n
 })
 
 -- Fallback for any other unlisted monitor

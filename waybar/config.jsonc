@@ -9,13 +9,14 @@
     "margin-right": 8,
     "spacing": 0,
 
+    // ── UKŁAD MODUŁÓW ─────────────────────────────────────────────────────────
+
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/window",
-        "custom/media-prev",
-        "custom/media-play",
-        "custom/media-next",
-        "custom/media-title"
+        "custom/cpu",
+        "custom/amd-gpu",
+        "custom/nvidia-gpu",
+        "memory"
     ],
 
     "modules-center": [
@@ -23,10 +24,6 @@
     ],
 
     "modules-right": [
-        "custom/cpu",
-        "custom/amd-gpu",
-        "custom/nvidia-gpu",
-        "memory",
         "wireplumber",
         "custom/mic",
         "battery",
@@ -41,7 +38,7 @@
         "custom/power"
     ],
 
-    // ── LEFT ──────────────────────────────────────────────────────────────────
+    // ── LEFT: WORKSPACES ──────────────────────────────────────────────────────
 
     "hyprland/workspaces": {
         "format": "[{name}]",
@@ -50,48 +47,7 @@
         "show-special": false
     },
 
-    "hyprland/window": {
-        "format": ">> {title}",
-        "max-length": 40,
-        "separate-outputs": true,
-        "rewrite": {
-            "(.*) - Mozilla Firefox": "$1 [ff]",
-            "(.*) - Alacritty": "$1"
-        }
-    },
-
-    // ── MEDIA ─────────────────────────────────────────────────────────────────
-
-    "custom/media-prev": {
-        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && echo '[⏮]' || echo ''",
-        "on-click": "playerctl previous",
-        "interval": 2,
-        "tooltip": false
-    },
-
-    "custom/media-play": {
-        "exec": "playerctl status 2>/dev/null | grep -q 'Playing' && echo '[⏸]' || playerctl status 2>/dev/null | grep -q 'Paused' && echo '[⏯]' || echo ''",
-        "on-click": "playerctl play-pause",
-        "interval": 1,
-        "tooltip": false
-    },
-
-    "custom/media-next": {
-        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && echo '[⏭]' || echo ''",
-        "on-click": "playerctl next",
-        "interval": 2,
-        "tooltip": false
-    },
-
-    "custom/media-title": {
-        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && playerctl metadata --format '{{ artist }} — {{ title }}' 2>/dev/null || echo ''",
-        "on-click": "~/.config/waybar/scripts/media.sh toggle-popup",
-        "interval": 2,
-        "max-length": 30,
-        "tooltip": false
-    },
-
-    // ── CENTER ────────────────────────────────────────────────────────────────
+    // ── CENTER: CLOCK ─────────────────────────────────────────────────────────
 
     "clock": {
         "format": "[ {:%a %d %b  %H:%M:%S} ]",
@@ -99,7 +55,7 @@
         "interval": 1
     },
 
-    // ── RIGHT: SYSTEM ─────────────────────────────────────────────────────────
+    // ── SYSTEM MONITORING (TWÓJ ORYGINALNY SETUP SKRYPTÓW) ───────────────────
 
     "custom/cpu": {
         "exec": "~/.config/waybar/scripts/cpu.sh",

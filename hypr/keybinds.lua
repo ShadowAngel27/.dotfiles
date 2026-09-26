@@ -9,7 +9,7 @@ hl.bind("SUPER + G", hl.dsp.exec_cmd("steam steam://rungameid/404790"))
 hl.bind("SUPER + V", hl.dsp.exec_cmd("bash -c 'cliphist list | rofi -dmenu -display-columns 2 -theme ~/.config/rofi/cliphist.rasi | cliphist decode | wl-copy'"))
 
 -- ── Screenshots ───────────────────────────────────────────────────────────────
-hl.bind("PRINT", hl.dsp.exec_cmd("/home/shadow_angel/.local/bin/hyprsnap"))
+hl.bind("INSERT", hl.dsp.exec_cmd("/home/shadow_angel/.local/bin/hyprsnap"))
 
 -- ── Window Actions ────────────────────────────────────────────────────────────
 hl.bind("SUPER + C",         hl.dsp.window.close())
