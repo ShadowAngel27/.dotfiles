@@ -13,6 +13,13 @@
 
     "modules-left": [
         "hyprland/workspaces",
+        // ── ZAKOMENTOWANE LEWE MODUŁY (TYTUŁ I MEDIA) ──
+        // "hyprland/window",
+        // "custom/media-prev",
+        // "custom/media-play",
+        // "custom/media-next",
+        // "custom/media-title",
+        // ── PRZENIESIONE ZASOBY SYSTEMOWE ──
         "custom/cpu",
         "custom/amd-gpu",
         "custom/nvidia-gpu",
@@ -24,6 +31,11 @@
     ],
 
     "modules-right": [
+        // ── ZAKOMENTOWANA ORYGINALNA POZYCJA ZASOBÓW (BYŁY PO PRAWEJ) ──
+        // "custom/cpu",
+        // "custom/amd-gpu",
+        // "custom/nvidia-gpu",
+        // "memory",
         "wireplumber",
         "custom/mic",
         "battery",
@@ -46,6 +58,53 @@
         "all-outputs": false,
         "show-special": false
     },
+
+    // ── UNUSED / REVERTIBLE: WINDOW TITLE ─────────────────────────────────────
+    // (Zakomentowane – usuń /* i */ aby włączyć z powrotem)
+    /*
+    "hyprland/window": {
+        "format": ">> {title}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "$1 [ff]",
+            "(.*) - Alacritty": "$1"
+        }
+    },
+    */
+
+    // ── UNUSED / REVERTIBLE: MEDIA CONTROLS ───────────────────────────────────
+    // (Zakomentowane – usuń /* i */ aby włączyć z powrotem)
+    /*
+    "custom/media-prev": {
+        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && echo '[⏮]' || echo ''",
+        "on-click": "playerctl previous",
+        "interval": 2,
+        "tooltip": false
+    },
+
+    "custom/media-play": {
+        "exec": "playerctl status 2>/dev/null | grep -q 'Playing' && echo '[⏸]' || playerctl status 2>/dev/null | grep -q 'Paused' && echo '[⏯]' || echo ''",
+        "on-click": "playerctl play-pause",
+        "interval": 1,
+        "tooltip": false
+    },
+
+    "custom/media-next": {
+        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && echo '[⏭]' || echo ''",
+        "on-click": "playerctl next",
+        "interval": 2,
+        "tooltip": false
+    },
+
+    "custom/media-title": {
+        "exec": "playerctl status 2>/dev/null | grep -q 'Playing\\|Paused' && playerctl metadata --format '{{ artist }} — {{ title }}' 2>/dev/null || echo ''",
+        "on-click": "~/.config/waybar/scripts/media.sh toggle-popup",
+        "interval": 2,
+        "max-length": 30,
+        "tooltip": false
+    },
+    */
 
     // ── CENTER: CLOCK ─────────────────────────────────────────────────────────
 
