@@ -15,7 +15,7 @@ hl.window_rule({ name = "float-pavucontrol", match = { class = "^pavucontrol$"  
 hl.window_rule({ name = "float-blueman",     match = { class = "^blueman-manager$"      }, float = true })
 hl.window_rule({ name = "float-nm",          match = { class = "^nm-connection-editor$" }, float = true })
 
--- ── Permissions (uncomment for screensharing / OBS / Vesktop) ─────────────────
+-- ── Permissions (screensharing / OBS / Vesktop) ──
 hl.config({ ecosystem = { enforce_permissions = true } })
 hl.permission("/usr/(bin|local/bin)/hyprlock",                         "screencopy", "allow")
 hl.permission("/usr/(bin|local/bin)/grim",                             "screencopy", "allow")

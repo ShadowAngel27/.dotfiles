@@ -7,8 +7,6 @@ local WALLPAPER_IMAGE = "/home/shadow_angel/Pictures/Wallpapers/wallpaper.jpg"
 local WALLPAPER_VIDEO = "/home/shadow_angel/Pictures/Wallpapers/animated.mp4"
 
 local function start_wallpaper()
-    hl.exec_cmd("pkill hyprpaper")
-    hl.exec_cmd("pkill mpvpaper")
 
     if WALLPAPER_MODE == "animated" then
         -- hyprpaper handles the static monitor (HDMI-A-1)
@@ -23,7 +21,7 @@ local function start_wallpaper()
             configFile:write("ipc = true\n")
             configFile:close()
         end
-        hl.exec_cmd("hyprpaper &")
+        hl.exec_cmd("sleep 2 && hyprpaper &")
         hl.exec_cmd("sleep 1 && mpvpaper -o 'loop no-audio hwdec=auto' eDP-2 " .. WALLPAPER_VIDEO .. " &")
     else
         -- static: hyprpaper handles both monitors, mpvpaper stays off
@@ -43,7 +41,7 @@ local function start_wallpaper()
             configFile:write("ipc = true\n")
             configFile:close()
         end
-        hl.exec_cmd("hyprpaper &")
+        hl.exec_cmd("sleep 2 && hyprpaper &")
     end
 end
 
@@ -58,8 +56,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("swayosd-server -s ~/.config/swayosd/style.css --config ~/.config/swayosd/config.toml &")
 
     -- Audio
-    hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@   18%")
-    hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 30%")
+    -- hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@   18%")
+    -- hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 30%")
 
     -- Keyboard RGB
     hl.exec_cmd("sh -c \"echo '1b003a,1b003a,1b003a,1b003a,100' | sudo tee /sys/devices/platform/acer-wmi/four_zoned_kb/per_zone_mode\"")
@@ -73,5 +71,4 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hypr-kblayoutd &")
     hl.exec_cmd("hyprshade auto &")
     hl.exec_cmd("hyprctl setcursor capitaine-cursors 24")
-    hl.exec_cmd("pkill -f kwin_wayland")
 end)

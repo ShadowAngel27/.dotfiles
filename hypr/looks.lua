@@ -78,7 +78,7 @@ hl.config({
         fullscreen_on_one_column = true,
     },
     misc = {
-        force_default_wallpaper = 0,  -- change to -1
+        force_default_wallpaper = 0,
         disable_hyprland_logo   = true,
     },
     render = {
@@ -86,6 +86,6 @@ hl.config({
         direct_scanout = false,
     },
     cursor = {
-        inactive_timeout = 5, -- Kursor znika po 3 sekundach bezczynności
+        inactive_timeout = 5, -- Cursor hides after 5 seconds of inactivity.
     },
 })
