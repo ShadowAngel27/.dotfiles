@@ -23,17 +23,12 @@ local function start_wallpaper()
         end
         hl.exec_cmd("sleep 2 && hyprpaper &")
         hl.exec_cmd("sleep 1 && mpvpaper -o 'loop no-audio hwdec=auto' eDP-2 " .. WALLPAPER_VIDEO .. " &")
-    else
-        -- static: hyprpaper handles both monitors, mpvpaper stays off
+        else
+        -- static: one wallpaper for every monitor, whatever the connector is called
         local configFile = io.open(os.getenv("HOME") .. "/.config/hypr/hyprpaper.conf", "w")
         if configFile then
             configFile:write("wallpaper {\n")
-            configFile:write("    monitor = eDP-2\n")
-            configFile:write("    path = " .. WALLPAPER_IMAGE .. "\n")
-            configFile:write("    fit_mode = cover\n")
-            configFile:write("}\n")
-            configFile:write("wallpaper {\n")
-            configFile:write("    monitor = HDMI-A-1\n")
+            configFile:write("    monitor =\n")
             configFile:write("    path = " .. WALLPAPER_IMAGE .. "\n")
             configFile:write("    fit_mode = cover\n")
             configFile:write("}\n")
@@ -68,7 +63,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wl-paste --type image --watch cliphist store &")
     hl.exec_cmd("nm-applet &")
     hl.exec_cmd("udiskie &")
-    hl.exec_cmd("hypr-kblayoutd &")
     hl.exec_cmd("hyprshade auto &")
     hl.exec_cmd("hyprctl setcursor capitaine-cursors 24")
 end)
