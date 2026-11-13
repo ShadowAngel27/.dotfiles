@@ -34,3 +34,4 @@ image/bmp=imv.desktop
 image/tiff=imv.desktop
 x-scheme-handler/tg=userapp-AyuGram Desktop-DZVHX3.desktop
 x-scheme-handler/tonsite=userapp-AyuGram Desktop-Y1QHX3.desktop
+inode/directory=thunar.desktop
