@@ -22,3 +22,9 @@ hl.permission("/usr/(bin|local/bin)/grim",                             "screenco
 hl.permission("/usr/(bin|local/bin)/hyprpicker",                       "screencopy", "allow")
 hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 hl.permission("/usr/(bin|local/bin)/hyprpm",                           "plugin",     "allow")
+
+hl.window_rule({
+    name    = "alacritty-opacity",
+    match   = { class = "^Alacritty$" },
+    opacity = "1.0 0.85",
+})

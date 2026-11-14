@@ -46,7 +46,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start graphical-session.target")
 
     hl.exec_cmd("hypridle &")
-    hl.exec_cmd("hyprpolkitagent &")
+    hl.exec_cmd("/usr/lib/hyprpolkitagent/hyprpolkitagent &")
     hl.exec_cmd("swaync &")
     hl.exec_cmd("swayosd-server -s ~/.config/swayosd/style.css --config ~/.config/swayosd/config.toml &")
 
